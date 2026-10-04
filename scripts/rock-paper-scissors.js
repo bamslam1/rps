@@ -21,35 +21,47 @@
         };
       }
       */
-
+      
       function playGame(playerMove) {
           pickComputerMove();
 
+      document.querySelectorAll('.move-button').forEach(button => {
+      button.classList.remove('win', 'lose', 'tie');
+      });
       if (playerMove === 'scissors') {
         if (computerMove === 'rock') {
           result = 'You lose.';
+          document.getElementById('scissors').classList.add('lose');
         } else if (computerMove === 'paper') {
           result = 'You win.';
+          document.getElementById('scissors').classList.add('win');
         } else if (computerMove === 'scissors') {
           result = 'Tie.';
+          document.getElementById('scissors').classList.add('tie');
         }
 
       } else if (playerMove === 'paper') {
         if (computerMove === 'rock') {
           result = 'You win.';
+          document.getElementById('paper').classList.add('win');
         } else if (computerMove === 'paper') {
           result = 'Tie.';
+          document.getElementById('paper').classList.add('tie');
         } else if (computerMove === 'scissors') {
           result = 'You lose.';
+          document.getElementById('paper').classList.add('lose');
         }
         
       } else if (playerMove === 'rock') {
         if (computerMove === 'rock') {
           result = 'Tie.';
+          document.getElementById('rock').classList.add('tie');
         } else if (computerMove === 'paper') {
           result = 'You lose.';
+          document.getElementById('rock').classList.add('lose');
         } else if (computerMove === 'scissors') {
           result = 'You win.';
+          document.getElementById('rock').classList.add('win');
         }
       }
         
