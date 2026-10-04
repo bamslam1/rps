@@ -89,7 +89,7 @@
 
       function updateScoreElement() {
       document.querySelector('.js-score')
-      .innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+      .innerHTML = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties} <br> <br> Rounds Played: ${score.wins + score.ties + score.losses}`;
     }
 
     updateScoreElement();
