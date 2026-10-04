@@ -24,6 +24,18 @@
       cursor: pointer;
     }
 
+    .win {
+      background-color: limegreen
+    }
+
+    .lose {
+      background-color: red
+    }
+
+    .tie {
+      background-color: yellow
+    }
+
     .result {
       font-size: 25px;
       font-weight: bold;
