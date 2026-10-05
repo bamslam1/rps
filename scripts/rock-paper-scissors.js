@@ -22,9 +22,13 @@
       }
       */
 
-      function bg(color) {
+      function bg(color, accent) {
         document.body.style.backgroundColor = color;
-    }
+        document.body.style.color = accent;
+        document.querySelectorAll('.move-button').forEach(button => {
+          button.style.borderColor = accent;
+        });
+      }
 
       function playGame(playerMove) {
           pickComputerMove();
@@ -59,13 +63,14 @@
         
       if (result === 'You win.') {
         score.wins += 1;
-        bg("limegreen");
+        bg("limegreen", "black");
       } else if (result === 'You lose.') {
         score.losses += 1;
-        bg("red");
+        bg("red", "white");
       } else if (result === 'Tie.') {
         score.ties += 1;
-        bg("yellow");
+        bg("yellow", "black");
+        
       }
 
       // ***
