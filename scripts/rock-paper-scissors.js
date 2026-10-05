@@ -12,6 +12,29 @@
         ties: 0
       };
 
+      let isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      function applyTheme() {
+        document.body.style.backgroundColor = isDark ? 'rgb(25, 25, 25)' : 'rgb(244, 243, 242)';
+        document.body.style.color = isDark ? 'white' : 'black';
+
+        document.querySelectorAll('.move-button').forEach(button => {
+          button.style.borderColor = isDark ? 'white' : 'black';
+        });
+
+        document.querySelectorAll('.reset-score-button').forEach(button => {
+          button.style.backgroundColor = isDark ? 'white' : 'black';
+          button.style.color = isDark ? 'black' : 'white';
+        });
+      }
+
+        document.querySelector('.theme-toggle-button').addEventListener('click', () => {
+        isDark = !isDark;
+        applyTheme();
+      });
+
+applyTheme();
+
       /*
       if (!score) {
         score = {
@@ -21,56 +44,56 @@
         };
       }
       */
-
-      function bg(color, accent) {
-        document.body.style.backgroundColor = color;
-        document.body.style.color = accent;
-        document.querySelectorAll('.move-button').forEach(button => {
-          button.style.borderColor = accent;
-        });
-      }
-
+      
       function playGame(playerMove) {
           pickComputerMove();
 
+      document.querySelectorAll('.move-button').forEach(button => {
+      button.classList.remove('win', 'lose', 'tie');
+      });
       if (playerMove === 'scissors') {
         if (computerMove === 'rock') {
           result = 'You lose.';
+          document.getElementById('scissors').classList.add('lose');
         } else if (computerMove === 'paper') {
           result = 'You win.';
+          document.getElementById('scissors').classList.add('win');
         } else if (computerMove === 'scissors') {
           result = 'Tie.';
+          document.getElementById('scissors').classList.add('tie');
         }
 
       } else if (playerMove === 'paper') {
         if (computerMove === 'rock') {
           result = 'You win.';
+          document.getElementById('paper').classList.add('win');
         } else if (computerMove === 'paper') {
           result = 'Tie.';
+          document.getElementById('paper').classList.add('tie');
         } else if (computerMove === 'scissors') {
           result = 'You lose.';
+          document.getElementById('paper').classList.add('lose');
         }
         
       } else if (playerMove === 'rock') {
         if (computerMove === 'rock') {
           result = 'Tie.';
+          document.getElementById('rock').classList.add('tie');
         } else if (computerMove === 'paper') {
           result = 'You lose.';
+          document.getElementById('rock').classList.add('lose');
         } else if (computerMove === 'scissors') {
           result = 'You win.';
+          document.getElementById('rock').classList.add('win');
         }
       }
         
       if (result === 'You win.') {
         score.wins += 1;
-        bg("limegreen", "black");
       } else if (result === 'You lose.') {
         score.losses += 1;
-        bg("red", "white");
       } else if (result === 'Tie.') {
         score.ties += 1;
-        bg("yellow", "black");
-        
       }
 
       // ***
