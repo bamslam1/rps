@@ -8,15 +8,25 @@
     <p class="title">Rock Paper Scissors</p>
     <button onclick="
     playGame('rock');
-    " class="move-button"><img src="images/rock-emoji.png" alt="Rock" class="move-icon"></button>
+    " class="move-button" id="rock"><img src="images/rock-emoji.png" alt="Rock" class="move-icon"></button>
 
     <button onclick="
         playGame('paper');
-    " class="move-button"><img src="images/paper-emoji.png" alt="Paper" class="move-icon"></button>
+    " class="move-button" id="paper"><img src="images/paper-emoji.png" alt="Paper" class="move-icon"></button>
 
     <button onclick="
       playGame('scissors');
-    " class="move-button"><img src="images/scissors-emoji.png" alt="Scissors" class="move-icon"></button>
+    " class="move-button" id="scissors"><img src="images/scissors-emoji.png" alt="Scissors" class="move-icon"></button>
+
+    <button onclick="
+      isDark + 1;
+      if (isDark > 1) {
+        isDark = 0;
+      }
+      applyTheme();
+    " class="theme-toggle-button"><img src="images/theme.png" alt="Set Theme"></button>
+
+    <!-- https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr0_atMWLmhQ8pLVRCqA7CgNWyr-yW21exyf68KRo3aA&s=10 -->
 
     <p class="js-result result"></p>
     <p class="js-moves"></p>
