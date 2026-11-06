@@ -6,49 +6,86 @@
   </head>
   <body>
     <noscript>
-  <p>
+  <p class="js-off">
     <strong>JavaScript is required.</strong> This site requires JavaScript to run.
     Please enable it in your browser settings, then reload the page.
     If the problem persists, try a current version of a modern browser such as
     <a href="https://www.google.com/chrome/" target="_blank" rel="noopener noreferrer">Google Chrome</a>.
     If the problem persists after updating to the newest version, please visit
-    <a href="https://github.com/bamslam1/French/issues">https://github.com/bamslam1/French/issues</a> to report a bug.
+    <a href="https://github.com/bamslam1/rps/issues">https://github.com/bamslam1/rps/issues</a> to report a bug.
   </p>
+  <style>
+    .page-content {
+      display: none;
+    }
+    .js-off {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font: bold 20px sans-serif;
+      z-index: 99999;
+      display: fixed !important;
+    }
+    .page-content {
+      display: none !important;
+    }
+  </style>
     </noscript>
-    <p class="title">Rock Paper Scissors</p>
-    <button onclick="
-    playGame('rock');
-    " class="move-button" id="rock"><img src="images/rock-emoji.png" alt="Rock" class="move-icon"></button>
+    <p>v3.0.1</p>
+    <input type="radio" name="theme-group" id="force-dark" class="theme-trigger">
+    <input type="radio" name="theme-group" id="force-light" class="theme-trigger">
 
-    <button onclick="
-        playGame('paper');
-    " class="move-button" id="paper"><img src="images/paper-emoji.png" alt="Paper" class="move-icon"></button>
+    <label for="force-dark" class="custom-button btn-dark theme-btn">Switch to Dark Mode</label>
+    <label for="force-light" class="custom-button btn-light theme-btn">Switch to Light Mode</label>
+    <div class="page-content">
+    <div id="game">
+      <p class="title">Rock Paper Scissors</p>
+      <button class="btn" style="display: block; margin-bottom: 20px;" onclick="rules();">How to play</button>
+      <button onclick="
+      playGame('rock');
+      " class="move-button" id="rock"><img src="images/rock-emoji.png" alt="Rock" class="move-icon"></button>
 
-    <button onclick="
-      playGame('scissors');
-    " class="move-button" id="scissors"><img src="images/scissors-emoji.png" alt="Scissors" class="move-icon"></button>
+      <button onclick="
+          playGame('paper');
+      " class="move-button" id="paper"><img src="images/paper-emoji.png" alt="Paper" class="move-icon"></button>
 
-    <button onclick="
-      isDark + 1;
-      if (isDark > 1) {
-        isDark = 0;
-      }
-      applyTheme();
-    " class="theme-toggle-button"><img src="images/theme.png" alt="Set Theme"></button>
+      <button onclick="
+        playGame('scissors');
+      " class="move-button" id="scissors"><img src="images/scissors-emoji.png" alt="Scissors" class="move-icon"></button>
 
-    <!-- https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr0_atMWLmhQ8pLVRCqA7CgNWyr-yW21exyf68KRo3aA&s=10 -->
+      <p class="js-result result"></p>
+      <p class="js-moves"></p>
+      <p class="js-score score"></p>
 
-    <p class="js-result result"></p>
-    <p class="js-moves"></p>
-    <p class="js-score score"></p>
-
-    <button onclick="
-      score.wins = 0;
-      score.losses = 0;
-      score.ties = 0;
-      localStorage.removeItem('score')
-      updateScoreElement();
-    " class="reset-score-button">Reset Score</button>
+      <button onclick="
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        localStorage.removeItem('score')
+        updateScoreElement();
+      " class="reset-score-button">Reset Score</button>
+    </div>
+    <div id="rules" hidden>
+      <button class="btn" onclick="game();">Back to game</button>
+      <h1>
+        Rules
+      </h1>
+      <p>
+        Rock beats scissors.
+        <br>
+        <br>
+        Paper beats rock.
+        <br>
+        <br>
+        Scissors beats paper.
+      </p>
+      <br>
+      <p>
+        Fun Fact: Rock paper scissors is one of the oldest games in the world. Dating back to variations of the game at 200 BC.
+      </p>
+    </div>
 
     <script src="scripts/rock-paper-scissors.js"></script>
   </body>
