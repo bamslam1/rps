@@ -51,6 +51,15 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.ver {
+  font: bold 12px monospace;
+  color: color-mix(in srgb, var(--text-color) 75%, transparent);
+  position: sticky;
+  top: 0px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
 .theme-btn {
   bottom: 20px;
   right: 20px;
